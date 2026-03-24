@@ -78,7 +78,7 @@ class GeofenceServiceTest {
     @Test
     void checkAircraft_whenInsideMultipleZones_shouldGenerateMultipleAlerts() {
         RestrictedZone torrejon = new RestrictedZone("Base Aérea Torrejón", "MILITARY", 40.4967, -3.4456, 10.0);
-        Aircraft aircraft = new Aircraft("multi1", "TEST", "Spain", 40.498, -3.500, 500.0, 150.0, false);
+        Aircraft aircraft = new Aircraft("multi1", "TEST", "Spain", 40.498, -3.520, 500.0, 150.0, false);
         when(zoneRepository.findAll()).thenReturn(Arrays.asList(madridAirport, torrejon));
 
         assertEquals(2, geofenceService.checkAircraft(aircraft).size());
