@@ -47,3 +47,8 @@ pip install pre-commit
 pre-commit install
 pre-commit run --all-files
 ```
+
+
+## CI de seguridad
+
+El repositorio incluye un workflow de GitHub Actions (`.github/workflows/secret-scan.yml`) que ejecuta **gitleaks** en cada push/PR.
