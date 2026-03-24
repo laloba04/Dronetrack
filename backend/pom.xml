@@ -9,11 +9,11 @@
         <relativePath/>
     </parent>
 
-    <groupId>com.dronetrack</groupId>
+    <groupId>com.skyfence</groupId>
     <artifactId>backend</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>backend</name>
-    <description>DroneTrack backend</description>
+    <description>SkyFence backend</description>
 
     <properties>
         <java.version>17</java.version>

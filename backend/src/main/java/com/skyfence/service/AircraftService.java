@@ -1,7 +1,7 @@
-package com.dronetrack.service;
+package com.skyfence.service;
 
-import com.dronetrack.model.Aircraft;
-import com.dronetrack.repository.AircraftRepository;
+import com.skyfence.model.Aircraft;
+import com.skyfence.repository.AircraftRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

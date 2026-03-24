@@ -1,7 +1,7 @@
-package com.dronetrack.service;
+package com.skyfence.service;
 
-import com.dronetrack.model.Aircraft;
-import com.dronetrack.repository.AircraftRepository;
+import com.skyfence.model.Aircraft;
+import com.skyfence.repository.AircraftRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

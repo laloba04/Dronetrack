@@ -1,6 +1,6 @@
-package com.dronetrack.repository;
+package com.skyfence.repository;
 
-import com.dronetrack.model.Aircraft;
+import com.skyfence.model.Aircraft;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

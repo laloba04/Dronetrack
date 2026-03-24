@@ -1,7 +1,7 @@
-package com.dronetrack.controller;
+package com.skyfence.controller;
 
-import com.dronetrack.model.RestrictedZone;
-import com.dronetrack.repository.RestrictedZoneRepository;
+import com.skyfence.model.RestrictedZone;
+import com.skyfence.repository.RestrictedZoneRepository;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;

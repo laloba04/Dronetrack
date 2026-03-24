@@ -1,8 +1,8 @@
-package com.dronetrack.controller;
+package com.skyfence.controller;
 
-import com.dronetrack.model.Aircraft;
-import com.dronetrack.service.AircraftService;
-import com.dronetrack.service.OpenSkyService;
+import com.skyfence.model.Aircraft;
+import com.skyfence.service.AircraftService;
+import com.skyfence.service.OpenSkyService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;

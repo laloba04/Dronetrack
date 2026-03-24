@@ -1,4 +1,4 @@
-package com.dronetrack.model;
+package com.skyfence.model;
 
 import java.time.LocalDateTime;
 

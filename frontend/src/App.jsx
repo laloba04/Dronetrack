@@ -97,7 +97,7 @@ export default function App() {
       
       {/* Cabecera superior */}
       <div style={{ display:'flex', justifyContent:'space-between', alignItems: 'center', marginBottom:'20px', background: 'white', padding: '15px 20px', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-        <h1 style={{ margin: 0, fontSize: '24px', color: '#1f2937' }}>✈ DroneTrack</h1>
+        <h1 style={{ margin: 0, fontSize: '24px', color: '#1f2937' }}>✈ SkyFence</h1>
         <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
           <a href="http://localhost:8080/swagger-ui.html" target="_blank" rel="noreferrer" style={{ textDecoration: 'none', color: '#3b82f6', fontWeight: '600', fontSize: '14px' }}>Swagger API ↗</a>
           <span style={{ color: connected ? '#10b981' : '#ef4444', fontSize: '14px', fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: '6px' }}>

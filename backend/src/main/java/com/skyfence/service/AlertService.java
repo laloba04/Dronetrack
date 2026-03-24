@@ -1,6 +1,6 @@
-package com.dronetrack.service;
+package com.skyfence.service;
 
-import com.dronetrack.model.Alert;
+import com.skyfence.model.Alert;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 

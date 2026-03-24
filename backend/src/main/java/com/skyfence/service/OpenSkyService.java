@@ -1,6 +1,6 @@
-package com.dronetrack.service;
+package com.skyfence.service;
 
-import com.dronetrack.model.Aircraft;
+import com.skyfence.model.Aircraft;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;

@@ -1,9 +1,9 @@
-package com.dronetrack.service;
+package com.skyfence.service;
 
-import com.dronetrack.model.Aircraft;
-import com.dronetrack.model.Alert;
-import com.dronetrack.model.RestrictedZone;
-import com.dronetrack.repository.RestrictedZoneRepository;
+import com.skyfence.model.Aircraft;
+import com.skyfence.model.Alert;
+import com.skyfence.model.RestrictedZone;
+import com.skyfence.repository.RestrictedZoneRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

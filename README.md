@@ -1,4 +1,4 @@
-# DroneTrack
+# SkyFence
 
 > Detección de intrusiones en zonas restringidas en tiempo real
 
@@ -71,9 +71,9 @@ OpenSky Network API
 ## Estructura del proyecto
 
 ```
-dronetrack/
+SkyFence/
 ├── backend/
-│   ├── src/main/java/com/dronetrack/
+│   ├── src/main/java/com/skyfence/
 │   │   ├── config/
 │   │   │   ├── WebSocketConfig.java
 │   │   │   └── OpenApiConfig.java
@@ -92,8 +92,8 @@ dronetrack/
 │   │   │   ├── Aircraft.java
 │   │   │   ├── RestrictedZone.java
 │   │   │   └── Alert.java
-│   │   └── DroneTrackApplication.java
-│   └── src/test/java/com/dronetrack/
+│   │   └── SkyFenceApplication.java
+│   └── src/test/java/com/skyfence/
 │       ├── service/
 │       │   ├── GeofenceServiceTest.java     (Mockito — 7 casos)
 │       │   └── AircraftServiceTest.java     (Mockito — 4 casos)
@@ -259,3 +259,4 @@ Cobertura incluida:
 - Autenticación con JWT para proteger los endpoints
 - MQTT para integración con sensores IoT reales en lugar de OpenSky
 - Métricas con Prometheus + Grafana
+- Pipeline CI/CD con DevSecOps (testing automatizado + análisis de seguridad antes de merge)

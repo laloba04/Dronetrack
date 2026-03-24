@@ -1,6 +1,6 @@
-package com.dronetrack.repository;
+package com.skyfence.repository;
 
-import com.dronetrack.model.RestrictedZone;
+import com.skyfence.model.RestrictedZone;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface RestrictedZoneRepository extends JpaRepository<RestrictedZone, Long> {

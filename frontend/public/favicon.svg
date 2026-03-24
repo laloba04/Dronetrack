@@ -1,22 +1,40 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Fondo circular con gradiente -->
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0ea5e9"/>
+      <stop offset="100%" stop-color="#1e3a8a"/>
+    </linearGradient>
+    <linearGradient id="shield" x1="32" y1="10" x2="32" y2="54" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#cbd5e1"/>
+    </linearGradient>
+  </defs>
+
   <!-- Fondo circular -->
-  <circle cx="32" cy="32" r="30" fill="#1e40af"/>
+  <circle cx="32" cy="32" r="30" fill="url(#bg)"/>
 
-  <!-- Cuerpo central del dron -->
-  <rect x="27" y="27" width="10" height="10" rx="2" fill="white"/>
+  <!-- Escudo (shield) -->
+  <path d="M32 10 L48 18 L48 34 C48 44 40 52 32 56 C24 52 16 44 16 34 L16 18 Z"
+        fill="url(#shield)" opacity="0.95"/>
 
-  <!-- Brazos del dron -->
-  <line x1="32" y1="32" x2="16" y2="16" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
-  <line x1="32" y1="32" x2="48" y2="16" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
-  <line x1="32" y1="32" x2="16" y2="48" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
-  <line x1="32" y1="32" x2="48" y2="48" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Contorno del escudo -->
+  <path d="M32 10 L48 18 L48 34 C48 44 40 52 32 56 C24 52 16 44 16 34 L16 18 Z"
+        fill="none" stroke="#0ea5e9" stroke-width="1.5"/>
 
-  <!-- Hélices (elipses en cada esquina) -->
-  <ellipse cx="16" cy="16" rx="7" ry="3" fill="white" opacity="0.9" transform="rotate(-45 16 16)"/>
-  <ellipse cx="48" cy="16" rx="7" ry="3" fill="white" opacity="0.9" transform="rotate(45 48 16)"/>
-  <ellipse cx="16" cy="48" rx="7" ry="3" fill="white" opacity="0.9" transform="rotate(45 16 48)"/>
-  <ellipse cx="48" cy="48" rx="7" ry="3" fill="white" opacity="0.9" transform="rotate(-45 48 48)"/>
+  <!-- Avión simplificado dentro del escudo -->
+  <g transform="translate(32, 34)">
+    <!-- Fuselaje -->
+    <path d="M0 -12 L3 -4 L3 4 L8 10 L8 12 L0 8 L-8 12 L-8 10 L-3 4 L-3 -4 Z"
+          fill="#1e3a8a"/>
+    <!-- Alas -->
+    <path d="M-3 -1 L-12 4 L-12 6 L-3 3 Z" fill="#1e3a8a"/>
+    <path d="M3 -1 L12 4 L12 6 L3 3 Z" fill="#1e3a8a"/>
+    <!-- Cola -->
+    <path d="M-1 -12 L0 -14 L1 -12 Z" fill="#1e3a8a"/>
+  </g>
 
-  <!-- Punto rojo de alerta en el centro -->
-  <circle cx="32" cy="32" r="3" fill="#ef4444"/>
+  <!-- Líneas de "fence" / radar alrededor del escudo -->
+  <circle cx="32" cy="32" r="26" fill="none" stroke="#38bdf8" stroke-width="1" stroke-dasharray="3 3" opacity="0.7"/>
+  <circle cx="32" cy="32" r="29" fill="none" stroke="#38bdf8" stroke-width="0.7" stroke-dasharray="2 4" opacity="0.4"/>
 </svg>

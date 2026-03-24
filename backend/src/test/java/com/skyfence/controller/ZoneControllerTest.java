@@ -1,7 +1,7 @@
-package com.dronetrack.controller;
+package com.skyfence.controller;
 
-import com.dronetrack.model.RestrictedZone;
-import com.dronetrack.repository.RestrictedZoneRepository;
+import com.skyfence.model.RestrictedZone;
+import com.skyfence.repository.RestrictedZoneRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
