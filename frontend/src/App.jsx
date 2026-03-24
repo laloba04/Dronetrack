@@ -19,6 +19,8 @@ export default function App() {
   const allAlerts = [...mockAlerts, ...rawAlerts];
   const alerts = clearedAt ? allAlerts.filter(a => new Date(a.detectedAt || Date.now()) > clearedAt) : allAlerts;
   const alertIcaos = new Set(alerts.map(a => a.icao24 || a.aircraftIcao));
+  // Mapa icao -> tipo de zona para colorear el icono según amenaza
+  const alertZoneTypes = new Map(alerts.map(a => [a.icao24 || a.aircraftIcao, a.zoneType || a.type || 'AIRPORT']));
   const zoneTypes = ['ALL', ...new Set(zones.map(z => z.type))];
   const filteredZones = zoneFilter === 'ALL' ? zones : zones.filter(z => z.type === zoneFilter);
 
@@ -133,12 +135,12 @@ export default function App() {
             </div>
             
             <div style={{ background: 'white', padding: '12px', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-               <DroneMap aircraft={aircraft} zones={filteredZones} alertIcaos={alertIcaos} />
+               <DroneMap aircraft={aircraft} zones={filteredZones} alertIcaos={alertIcaos} alertZoneTypes={alertZoneTypes} />
                
                {/* Leyenda */}
                <div style={{ display: 'flex', gap: '20px', marginTop: '16px', fontSize: '13px', color: '#4b5563', justifyContent: 'center', fontWeight: '500', flexWrap: 'wrap' }}>
-                  <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}><span style={{ color: '#3b82f6' }}>✈</span> aeronave normal</span>
-                  <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}><span style={{ color: '#ef4444' }}>✈</span> intrusión detectada</span>
+                  <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}><span style={{ color: '#4b5563' }}>✈</span> aeronave normal</span>
+                  <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}><span style={{ color: '#eab308' }}>✈</span> intrusión detectada</span>
                   <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}><span style={{ color: '#3b82f6', fontSize: '16px' }}>○</span> AIRPORT</span>
                   <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}><span style={{ color: '#dc2626', fontSize: '16px' }}>○</span> MILITARY</span>
                   <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}><span style={{ color: '#f97316', fontSize: '16px' }}>○</span> NUCLEAR</span>
