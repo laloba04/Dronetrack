@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Fondo circular -->
+  <circle cx="32" cy="32" r="30" fill="#1e40af"/>
+
+  <!-- Cuerpo central del dron -->
+  <rect x="27" y="27" width="10" height="10" rx="2" fill="white"/>
+
+  <!-- Brazos del dron -->
+  <line x1="32" y1="32" x2="16" y2="16" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="32" y1="32" x2="48" y2="16" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="32" y1="32" x2="16" y2="48" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="32" y1="32" x2="48" y2="48" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Hélices (elipses en cada esquina) -->
+  <ellipse cx="16" cy="16" rx="7" ry="3" fill="white" opacity="0.9" transform="rotate(-45 16 16)"/>
+  <ellipse cx="48" cy="16" rx="7" ry="3" fill="white" opacity="0.9" transform="rotate(45 48 16)"/>
+  <ellipse cx="16" cy="48" rx="7" ry="3" fill="white" opacity="0.9" transform="rotate(45 16 48)"/>
+  <ellipse cx="48" cy="48" rx="7" ry="3" fill="white" opacity="0.9" transform="rotate(-45 48 48)"/>
+
+  <!-- Punto rojo de alerta en el centro -->
+  <circle cx="32" cy="32" r="3" fill="#ef4444"/>
+</svg>
