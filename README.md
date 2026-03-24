@@ -36,3 +36,14 @@ docker-compose up --build
 cd backend
 mvn test
 ```
+
+
+## Prevención de secretos en commits
+
+Se añadieron hooks de `pre-commit` para escanear secretos antes de cada commit.
+
+```bash
+pip install pre-commit
+pre-commit install
+pre-commit run --all-files
+```
