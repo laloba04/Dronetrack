@@ -96,9 +96,10 @@ dronetrack/
 │   └── src/test/java/com/dronetrack/
 │       ├── service/
 │       │   ├── GeofenceServiceTest.java     (Mockito — 7 casos)
-│       │   └── AircraftServiceTest.java     (Mockito)
+│       │   └── AircraftServiceTest.java     (Mockito — 4 casos)
 │       └── controller/
-│           └── AircraftControllerTest.java  (MockMvc — 3 casos)
+│           ├── AircraftControllerTest.java  (MockMvc — 3 casos)
+│           └── ZoneControllerTest.java      (MockMvc — 4 casos)
 ├── frontend/
 │   └── src/
 │       ├── components/
@@ -196,8 +197,17 @@ Clasificación de severidad:
 | Aeropuerto Madrid-Barajas | AIRPORT | 40.4983, -3.5676 | 5 km |
 | Aeropuerto El Prat Barcelona | AIRPORT | 41.2974, 2.0833 | 5 km |
 | Aeropuerto Bilbao | AIRPORT | 43.3011, -2.9106 | 4 km |
+| Aeropuerto Valencia | AIRPORT | 39.4893, -0.4816 | 4 km |
+| Aeropuerto Sevilla | AIRPORT | 37.4180, -5.8931 | 4 km |
+| Aeropuerto Málaga | AIRPORT | 36.6749, -4.4991 | 4 km |
 | Base Aérea de Torrejón | MILITARY | 40.4967, -3.4456 | 4 km |
+| Base Naval de Rota | MILITARY | 36.6412, -6.3496 | 5 km |
+| Base Aérea de Morón | MILITARY | 37.1749, -5.6159 | 4 km |
+| Base Aérea de Zaragoza | MILITARY | 41.6662, -1.0415 | 4 km |
 | Central Nuclear Cofrentes | NUCLEAR | 39.2503, -1.0636 | 3 km |
+| Central Nuclear Almaraz | NUCLEAR | 39.8070, -5.6980 | 3 km |
+| Central Nuclear Ascó | NUCLEAR | 41.2003, 0.5681 | 3 km |
+| Central Nuclear Vandellós | NUCLEAR | 40.9247, 0.8769 | 3 km |
 
 ---
 
@@ -219,10 +229,22 @@ Cobertura incluida:
 - Distancia Madrid-Barcelona ≈ 505 km (validación Haversine)
 - Sin zonas configuradas → sin alertas
 
+**AircraftServiceTest** (Mockito):
+- `getAllAircraft` devuelve todas las aeronaves
+- `getAllAircraft` devuelve lista vacía si no hay datos
+- `getAircraftInFlight` devuelve solo aeronaves en vuelo
+- `getAircraftInFlight` devuelve vacío si todas en tierra
+
 **AircraftControllerTest** (MockMvc):
 - `GET /api/aircraft` devuelve 200 con datos
 - `GET /api/aircraft/live` devuelve 200
 - `GET /api/aircraft/flying` devuelve 200
+
+**ZoneControllerTest** (MockMvc):
+- `GET /api/zones` devuelve 200 con zonas
+- `GET /api/zones` devuelve lista vacía si no hay zonas
+- `POST /api/zones` crea y devuelve la zona guardada
+- `DELETE /api/zones/{id}` elimina la zona por ID
 
 > Los tests usan un perfil `test` con H2 en memoria — no requieren PostgreSQL.
 
@@ -230,8 +252,10 @@ Cobertura incluida:
 
 ## Posibles mejoras
 
-- Autenticación con JWT para proteger los endpoints
 - Histórico de alertas persistido en BD con consulta por rango de fechas
-- MQTT para integración con sensores IoT reales
-- Panel de administración para gestionar zonas desde el frontend
-- Métricas con Spring Actuator + Prometheus + Grafana
+- Panel de gestión de zonas en el frontend (añadir y eliminar desde la UI)
+- Spring Actuator para endpoints `/health` y `/metrics`
+- Simular intrusión con zona elegible desde el frontend
+- Autenticación con JWT para proteger los endpoints
+- MQTT para integración con sensores IoT reales en lugar de OpenSky
+- Métricas con Prometheus + Grafana
