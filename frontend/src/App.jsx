@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Toaster, toast } from 'react-hot-toast';
 import DroneMap from './components/DroneMap';
 import ConfirmModal from './components/ConfirmModal';
 import AlertPanel from './components/AlertPanel';
@@ -73,14 +74,16 @@ export default function App() {
     try {
       await axios.delete(`http://localhost:8080/api/zones/${zoneToDelete.id}`);
       setZones(prev => prev.filter(z => z.id !== zoneToDelete.id));
+      toast.success('Zona eliminada correctamente');
       setZoneToDelete(null);
     } catch (e) {
-      alert("Error al eliminar la zona.");
+      toast.error("Error intermitente al eliminar la zona.");
     }
   };
 
   const handleZoneAdded = (newZone) => {
     setZones(prev => [...prev, newZone]);
+    toast.success(`Zona "${newZone.name}" creada con éxito`);
   };
 
   // Acción para el botón de simular intrusión
@@ -113,6 +116,7 @@ export default function App() {
 
   return (
     <div style={{ padding: '20px', fontFamily: 'system-ui, -apple-system, sans-serif', background: '#f5f7fa', minHeight: '100vh' }}>
+      <Toaster position="bottom-right" />
       
       {/* Cabecera superior */}
       <div style={{ display:'flex', justifyContent:'space-between', alignItems: 'center', marginBottom:'20px', background: 'white', padding: '15px 20px', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
