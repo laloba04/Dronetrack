@@ -20,6 +20,17 @@ Sistema de monitorización de aeronaves que consume datos reales de [OpenSky Net
 
 ---
 
+## Funcionalidades Principales
+
+- **Monitorización en tiempo real:** Mapa interactivo con todas las aeronaves (actualizado vía OpenSky Network).
+- **Geofencing Dinámico (Haversine):** Cálculo de distancias a zonas restringidas como aeropuertos o bases de seguridad.
+- **Gestor de Zonas:** Panel integrado en UI para crear y eliminar zonas al vuelo con efecto inmediato.
+- **Simulador de Intrusiones:** Inyección de drones de prueba para validar el disparo visual y persistencia de alertas.
+- **Alertas STOMP / WebSocket:** Notificaciones asíncronas de bajísima latencia sin recargar la web.
+- **Observabilidad:** Control de salud de red y BD mediante Spring Actuator.
+
+---
+
 ## Arquitectura y flujo del sistema
 
 ```
@@ -177,11 +188,14 @@ Documentación interactiva disponible en `http://localhost:8080/swagger-ui.html`
 
 | Método | Endpoint | Descripción |
 |--------|----------|-------------|
-| `GET` | `/actuator/health` | Estado de salud (BD + OpenSky API) |
+| `GET` | `/actuator/health` | Estado global de la aplicación (agregado) |
+| `GET` | `/actuator/health/opensky` | (Custom) Conectividad y latencia con la API de OpenSky |
+| `GET` | `/actuator/health/db` | Integridad de la conexión con PostgreSQL |
+| `GET` | `/actuator/health/websocket` | (Custom) Estado del mensaje Broker STOMP y sesiones en vivo |
 | `GET` | `/actuator/info` | Información de la aplicación |
 | `GET` | `/actuator/metrics` | Métricas del sistema (JVM, HTTP, etc.) |
 
-> El health check incluye un indicador personalizado para verificar la conexión con OpenSky Network API.
+> Se han implementado *Health Checks* personalizados para emitir diagnósticos en formato JSON puro. La arquitectura permite extenderlos o monitorizarlos directamente con Prometheus + Grafana.
 
 ---
 
@@ -260,13 +274,12 @@ Cobertura incluida:
 
 ---
 
-## Posibles mejoras
+## Roadmap y futuras mejoras
 
-- Histórico de alertas persistido en BD con consulta por rango de fechas
-- ✅ Panel de gestión de zonas en el frontend (añadir y eliminar desde la UI)
-- ✅ Spring Actuator para endpoints `/health` y `/metrics`
-- Simular intrusión con zona elegible desde el frontend
-- Autenticación con JWT para proteger los endpoints
-- MQTT para integración con sensores IoT reales en lugar de OpenSky
-- Métricas con Prometheus + Grafana
-- Pipeline CI/CD con DevSecOps (testing automatizado + análisis de seguridad antes de merge)
+- Histórico de alertas persistido en BD con consulta filtrada y paginada.
+- Refactorización a modelo de navegación SPA con React-Router.
+- Hardening de contenedores para ejecución segura (no-root).
+- Rate Limiting integrado en la API clásica.
+- Health Checks customizados con métricas centralizadas vía Prometheus + Grafana.
+- Autenticación con JWT y observabilidad para los JWT.
+- Pipeline CI/CD con DevSecOps completo antes de hacer push/merge.

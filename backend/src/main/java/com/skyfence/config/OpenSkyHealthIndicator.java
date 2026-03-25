@@ -12,7 +12,7 @@ import java.time.Duration;
  * Custom health indicator that checks connectivity to the OpenSky Network API.
  * Reports UP if the API responds within the timeout, DOWN otherwise.
  */
-@Component
+@Component("opensky")
 public class OpenSkyHealthIndicator implements HealthIndicator {
 
     private final WebClient webClient;
