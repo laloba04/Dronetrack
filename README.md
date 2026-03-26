@@ -27,6 +27,7 @@ Sistema de monitorización de aeronaves que consume datos reales de [OpenSky Net
 - **Gestor de Zonas:** Panel integrado en UI para crear y eliminar zonas al vuelo con efecto inmediato.
 - **Simulador de Intrusiones:** Inyección de drones de prueba para validar el disparo visual y persistencia de alertas.
 - **Alertas STOMP / WebSocket:** Notificaciones asíncronas de bajísima latencia sin recargar la web.
+- **Rate Limiting Anti-DoS:** Protección proactiva de la API limitando peticiones abusivas (Bucket4j).
 - **Observabilidad:** Control de salud de red y BD mediante Spring Actuator.
 
 ---
@@ -179,6 +180,8 @@ Documentación interactiva disponible en `http://localhost:8080/swagger-ui.html`
 | `POST` | `/api/zones` | Añadir nueva zona restringida |
 | `DELETE` | `/api/zones/{id}` | Eliminar zona por ID |
 
+> **Nota Anti-DoS:** Todos los endpoints de la API clásica están protegidos por Rate Limiting. Superar el límite establecido devolverá un código HTTP `429 Too Many Requests`.
+
 ### WebSocket
 
 - Endpoint STOMP: `ws://localhost:8080/ws`
@@ -279,7 +282,6 @@ Cobertura incluida:
 - Histórico de alertas persistido en BD con consulta filtrada y paginada.
 - Refactorización a modelo de navegación SPA con React-Router.
 - Hardening de contenedores para ejecución segura (no-root).
-- Rate Limiting integrado en la API clásica.
 - Health Checks customizados con métricas centralizadas vía Prometheus + Grafana.
 - Autenticación con JWT y observabilidad para los JWT.
 - Pipeline CI/CD con DevSecOps completo antes de hacer push/merge.
