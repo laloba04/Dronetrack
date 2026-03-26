@@ -1,11 +1,14 @@
 FROM node:20-alpine AS build
 WORKDIR /app
-COPY package*.json .
+COPY --chown=node:node package*.json ./
 RUN npm install
-COPY . .
+COPY --chown=node:node . .
 RUN npm run build
 
-FROM nginx:alpine
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-COPY --from=build /app/dist /usr/share/nginx/html
-EXPOSE 80
+FROM node:20-alpine
+RUN npm install -g serve
+WORKDIR /app
+COPY --from=build --chown=node:node /app/dist ./dist
+USER node
+EXPOSE 8080
+CMD ["npx", "serve", "-s", "dist", "-l", "8080"]
